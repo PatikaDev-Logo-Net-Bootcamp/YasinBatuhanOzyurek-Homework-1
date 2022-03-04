@@ -1,5 +1,6 @@
 ﻿namespace HW1.Models
 {
+    // login model
     public class Login
     {
         public string Ad { get; set; }

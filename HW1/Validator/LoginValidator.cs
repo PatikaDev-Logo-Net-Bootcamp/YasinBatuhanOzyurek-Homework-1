@@ -5,6 +5,7 @@ namespace LogoBootcampHW1.Validator
 {
     public class LoginValidator : AbstractValidator<Login>
     {
+        // fluent validation rules for login model
         public LoginValidator()
         {
             RuleFor(x=>x.Ad)
