@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model ResponseViewModel
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link href="~/css/main.css" rel="stylesheet" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <div class="fadeIn first">
+      <img src="~/Media/User.png" id="icon" alt="User Icon" />
+    </div>
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.login.Ad, new {@class = "fadeIn second", placeholder = "Ad"})
+        @Html.ValidationMessageFor(x => x.login.Ad, null, new {@class = "invalid-feedback d-block"})
+
+        @Html.TextBoxFor(x => x.login.Soyad, new {@class = "fadeIn second", placeholder = "Soyad"})
+        @Html.ValidationMessageFor(x => x.login.Soyad, null, new {@class = "invalid-feedback d-block"})
+
+        @Html.TextBoxFor(x => x.login.Eposta, new {@class = "fadeIn second", placeholder = "Eposta"})
+        @Html.ValidationMessageFor(x => x.login.Eposta, null, new {@class = "invalid-feedback d-block"})
+
+        @Html.TextBoxFor(x => x.login.Şifre, new {@class = "fadeIn second", placeholder = "Şifre", @type="Password"})
+        @Html.ValidationMessageFor(x => x.login.Şifre, null, new {@class = "invalid-feedback d-block"})
+    </div>
+            <button class="btn btn-xs btn-primary" type="submit">Submit</button>
+            <div>
+                @if (Model.Error != null && !Model.Success || Model.Data != null && !Model.Success)
+                {
+                    <p class="text-danger">@Model.Error</p>
+                }
+                else
+                {
+                    <p class="text-success">@Model.Data</p>
+                }
+            </div>
+        }
+  </div>
+</div>
